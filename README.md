@@ -1,9 +1,7 @@
 # Tally
-Multiplatform application for preventing food waste
+Multiplatform application for preventing food waste, designed to focus on ease of adding and removing items and displaying data in a manner which is communicative about the items age and likelyness to go off
 
-# Cross-Platform Database Application
-
-A multi-platform application that maintains a database of users and items, deployable locally on Windows and Linux via desktop application (with system tray integration), accessible via web browsers, hostable on AWS, and available on mobile platforms.
+Deployable locally on Windows and Linux via desktop application (with system tray integration), accessible via web browsers, hostable on AWS, and available on mobile platforms.
 
 ## Core Architecture
 
