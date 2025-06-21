@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.csproj",
-      "projectName": "Tally",
-      "projectPath": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.csproj",
+      "projectUniqueName": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.Core.csproj",
+      "projectName": "Tally.Core",
+      "projectPath": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.Core.csproj",
       "packagesPath": "C:\\Users\\crris\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\obj\\",
       "projectStyle": "PackageReference",
