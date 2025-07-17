@@ -1,4 +1,4 @@
-﻿namespace Tally.Core.Models
+﻿namespace Tally.Core.Models.DataTransferObjects
 {
     public class BaseDto
     {
