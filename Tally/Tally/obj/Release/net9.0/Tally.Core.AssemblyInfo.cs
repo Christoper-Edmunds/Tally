@@ -12,9 +12,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tally.Core")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+589bd37129ed4758f0b622ec24d37e89f3e72ce2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ed33da2a8a31b9c37064d87b087f0e2af231419")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tally.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tally.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

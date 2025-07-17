@@ -8,23 +8,23 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\crris\\.nuget\\packages\\": {},
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Chris\\source\\repos\\Christoper-Edmunds\\Tally\\Tally\\Tally\\Tally.Core.csproj",
       "projectName": "Tally.Core",
-      "projectPath": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\Tally.Core.csproj",
-      "packagesPath": "C:\\Users\\crris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally\\obj\\",
+      "projectPath": "C:\\Users\\Chris\\source\\repos\\Christoper-Edmunds\\Tally\\Tally\\Tally\\Tally.Core.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Chris\\source\\repos\\Christoper-Edmunds\\Tally\\Tally\\Tally\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\crris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -76,7 +76,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
