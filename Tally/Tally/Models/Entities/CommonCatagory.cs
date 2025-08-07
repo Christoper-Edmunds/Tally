@@ -2,6 +2,10 @@
 {
     public class CommonCatagory : BaseEntity
     {
+        public string CategoryType { get; set; } = string.Empty;
+        public TimeSpan ExpirationTimeWhenClosed { get; set; } = TimeSpan.Zero;
+        public TimeSpan ExpirationTimeWhenOpen { get; set; } = TimeSpan.Zero;
+
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Tally.Core.Models.Entities
 {
-    public class CustomCatagory
+    public class CustomCatagory : CommonCatagory
     {
-
+        
     }
 }
