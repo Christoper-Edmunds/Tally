@@ -10,6 +10,9 @@ namespace Tally.Core.Models.Entities
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public DateTime? LastLoginAt { get; set; }
         public string? Role { get; set; } 
-        // Navigation properties can be added here if needed
+        public ICollection<Item> Items { get; set; } = new List<Item>();
+        public ICollection<Container> Containers { get; set; } = new List<Container>();
+        public ICollection<Location> Locations { get; set; } = new List<Location>();
+        public ICollection<Room> Rooms { get; set; } = new List<Room>();
     }
 }

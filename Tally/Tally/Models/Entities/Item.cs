@@ -6,12 +6,15 @@
         public int ContainerId { get; set; }
         // Navigation property
         public Container? Container { get; set; }
+        public int? CommonCatagoryId { get; set; }
+        public CommonCatagory? CommonCatagory { get; set; }
         // Additional properties specific to Item
         public string Category { get; set; } = string.Empty;
         public int Quantity { get; set; } = 1;
         public DateTime LastUpdated { get; set; }
         public DateTime? OpenedDate { get; set; }
         public bool HasBeenOpened => OpenedDate.HasValue;
+        public ICollection<User> Users { get; set; } = new List<User>();
 
         public Item()
         {
