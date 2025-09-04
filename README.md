@@ -67,6 +67,23 @@ Deployable locally on Windows and Linux via a desktop application (with system t
             │        PostgreSQL          │
             └────────────────────────────┘
 ```
+## Storage
+---
+┌───────────────┐  ┌───────────────┐
+│   Electron    │  │  Mobile App   │
+│  (Desktop)    │  │ (.NET MAUI)   │
+└──────┬────────┘  └──────┬────────┘
+       │                   │
+┌──────▼────────┐    ┌─────▼──────────┐
+│ Local Storage │    │ Local Storage  │
+│ (SQLite/DB)   │    │ (SQLite)       │
+└──────┬────────┘    └─────┬──────────┘
+       │                   │
+   (Sync Layer: bidirectional)
+       │                   │
+┌──────▼───────────────────▼───────┐
+│         API Layer (Cloud DB)     │
+└──────────────────────────────────┘
 
 ---
 
