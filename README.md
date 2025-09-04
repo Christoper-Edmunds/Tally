@@ -68,7 +68,7 @@ Deployable locally on Windows and Linux via a desktop application (with system t
             └────────────────────────────┘
 ```
 ## Storage
----
+```
 ┌───────────────┐  ┌───────────────┐
 │   Electron    │  │  Mobile App   │
 │  (Desktop)    │  │ (.NET MAUI)   │
@@ -84,8 +84,7 @@ Deployable locally on Windows and Linux via a desktop application (with system t
 ┌──────▼───────────────────▼───────┐
 │         API Layer (Cloud DB)     │
 └──────────────────────────────────┘
-
----
+```
 
 ## Project Structure
 
