@@ -1,4 +1,4 @@
-﻿namespace Tally.Core.Models.Entities
+namespace Tally.Data.Models.Entities
 {
     public class Item : BaseEntity
     {

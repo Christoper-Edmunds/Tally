@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 
-namespace Tally.Core.Models.Entities
+namespace Tally.Data.Models.Entities
 {
     public class User : IdentityUser
     {
