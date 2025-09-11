@@ -1,4 +1,4 @@
-namespace Tally.Data.Models.Entities
+namespace Tally.Data.Entities
 {
     public abstract class BaseEntity
     {

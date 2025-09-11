@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Tally.Data.Models.Entities;
+using Tally.Data.Entities;
 
 namespace Tally.Data
 {
-    public class TallyDbContext : IdentityDbContext<User>
+    public class TallyDbContext : DbContext
     {
         public TallyDbContext(DbContextOptions<TallyDbContext> options)
             : base(options)
@@ -40,22 +40,6 @@ namespace Tally.Data
                 .WithMany(c => c.Items)
                 .HasForeignKey(i => i.CommonCatagoryId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<User>()
-                .HasMany(u => u.Items)
-                .WithMany(i => i.Users);
-
-            builder.Entity<User>()
-                .HasMany(u => u.Containers)
-                .WithMany(c => c.Users);
-
-            builder.Entity<User>()
-                .HasMany(u => u.Locations)
-                .WithMany(l => l.Users);
-
-            builder.Entity<User>()
-                .HasMany(u => u.Rooms)
-                .WithMany(r => r.Users);
         }
     }
 }

@@ -1,16 +1,16 @@
-namespace Tally.Data.Models.Entities
+namespace Tally.Data.Entities
 {
     public class Item : BaseEntity
     {
         // Foreign key
         public int ContainerId { get; set; }
         // Navigation property
-        public Container? Container { get; set; }
+        public Container Container { get; set; }
         public int? CommonCatagoryId { get; set; }
         public CommonCatagory? CommonCatagory { get; set; }
         // Additional properties specific to Item
-        public string Category { get; set; } = string.Empty;
-        public int Quantity { get; set; } = 1;
+        public int CustomCatagoryId { get; set; }
+        public CustomCatagory? CustomCatagory { get; set; }
         public DateTime LastUpdated { get; set; }
         public DateTime? OpenedDate { get; set; }
         public bool HasBeenOpened => OpenedDate.HasValue;
