@@ -4,6 +4,8 @@ namespace Tally.Data.Entities
     {
         // Foreign key
         public int LocationId { get; set; }
-        public ICollection<User> Users { get; set; } = new List<User>();
+        // Navigation property
+        public Location Location { get; set; } = null!;
+        public ICollection<Container> Containers { get; set; } = new List<Container>();
     }
 }

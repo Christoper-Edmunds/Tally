@@ -7,7 +7,6 @@ namespace Tally.Data.Entities
         // Navigation property
         public Location? Location { get; set; }
         // Foreign key for Common Category
-        public Item? Item { get; set; }
-        public ICollection<User> Users { get; set; } = new List<User>();
+        public ICollection<Item> Items { get; set; } = new List<Item>();
     }
 }
