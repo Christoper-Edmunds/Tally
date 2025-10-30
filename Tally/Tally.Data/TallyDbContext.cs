@@ -31,8 +31,8 @@ namespace Tally.Data
 
             builder.Entity<Item>()
                 .HasOne(i => i.Container)
-                .WithOne(c => c.Item)
-                .HasForeignKey<Item>(i => i.ContainerId)
+                .WithMany(c => c.Items)
+                .HasForeignKey(i => i.ContainerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Item>()

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally.Api", "Tally.Api\Tall
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally.Data", "Tally.Data\Tally.Data.csproj", "{AAEDC59A-2ECC-4E5F-A738-4D3FA0B95D2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally.Web", "Tally.Web\Tally.Web\Tally.Web.csproj", "{6BB47D68-B0B4-433E-A1BB-9A6A4042E338}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally.Web.Client", "Tally.Web\Tally.Web.Client\Tally.Web.Client.csproj", "{D49A0901-DC03-4EF5-94B6-C138FE308BF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AAEDC59A-2ECC-4E5F-A738-4D3FA0B95D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAEDC59A-2ECC-4E5F-A738-4D3FA0B95D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAEDC59A-2ECC-4E5F-A738-4D3FA0B95D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB47D68-B0B4-433E-A1BB-9A6A4042E338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB47D68-B0B4-433E-A1BB-9A6A4042E338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB47D68-B0B4-433E-A1BB-9A6A4042E338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB47D68-B0B4-433E-A1BB-9A6A4042E338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49A0901-DC03-4EF5-94B6-C138FE308BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49A0901-DC03-4EF5-94B6-C138FE308BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49A0901-DC03-4EF5-94B6-C138FE308BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49A0901-DC03-4EF5-94B6-C138FE308BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,7 @@ namespace Tally.Data.Entities
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public bool SoftDeleted { get; set; }
-        public bool ReadyForHardDeletion => SoftDeleted && LastModifiedDate < DateTime.UtcNow.AddDays(-7);
+        public bool ReadyForHardDeletion => SoftDeleted && LastModifiedDate < DateTime.UtcNow.AddDays(-7); // consider adding a global config for hard delete delay
 
     }
 }

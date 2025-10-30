@@ -44,3 +44,8 @@
 /Tally/Tally.Data/obj
 /Tally/Tally.Api/obj
 /Tally/Tally/obj/Release/net9.0/Tally.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Tally/Tally.Web/Tally.Web/bin/Debug/net9.0
+/Tally/Tally.Web/Tally.Web/obj/Debug/net9.0
+/Tally/Tally.Web/Tally.Web/wwwroot
+/Tally/Tally.Web/Tally.Web.Client/bin/Debug/net9.0
+/Tally/Tally.Web/Tally.Web.Client/obj

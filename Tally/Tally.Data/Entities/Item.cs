@@ -12,6 +12,7 @@ namespace Tally.Data.Entities
         public int? CustomCatagoryId { get; set; }
         public CustomCatagory? CustomCatagory { get; set; }
         public bool HasBeenOpened => OpenedDate.HasValue;
+        public DateTime? OpenedDate { get; set; }
 
     }
 }
