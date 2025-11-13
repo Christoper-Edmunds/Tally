@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Tally.Data.Entities;
 
 namespace Tally.Data
 {
     public class TallyDbContext : DbContext
     {
+        protected readonly IConfiguration Configuration;
+
         public TallyDbContext(DbContextOptions<TallyDbContext> options)
             : base(options)
         {

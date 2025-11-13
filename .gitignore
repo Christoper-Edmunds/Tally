@@ -49,3 +49,11 @@
 /Tally/Tally.Web/Tally.Web/wwwroot
 /Tally/Tally.Web/Tally.Web.Client/bin/Debug/net9.0
 /Tally/Tally.Web/Tally.Web.Client/obj
+/Tally/Tally/obj/Debug/net9.0/scopedcss/bundle/Tally.Core.styles.css
+/Tally/Tally/obj/Debug/net9.0/scopedcss/projectbundle/Tally.Core.bundle.scp.css
+/Tally/Tally/obj/Debug/net9.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/Tally/Tally.Web/Tally.Web/obj/project.assets.json
+/Tally/Tally.Web/Tally.Web/obj/project.nuget.cache
+/Tally/Tally.Web/Tally.Web/obj/Tally.Web.csproj.nuget.dgspec.json
+/Tally/Tally.Web/Tally.Web/obj/Tally.Web.csproj.nuget.g.props
+/Tally/Tally.Web/Tally.Web/obj/Tally.Web.csproj.nuget.g.targets
