@@ -21,6 +21,7 @@ Deployable locally on Windows and Linux via a desktop application (with system t
 
 - **Blazor WebAssembly** — Single codebase for web client
 - **.NET MAUI** with Blazor components — Mobile apps sharing UI logic
+- **MudBlazor* - Component library likely to be adopted 
 
 ### Desktop Application
 
