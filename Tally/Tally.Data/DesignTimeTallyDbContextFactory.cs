@@ -8,10 +8,10 @@ namespace Tally.Data
     {
         public TallyDbContext CreateDbContext(string[] args)
         {
-            // Adjust the path as needed for your solution structure
+            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "Tally.Api"));
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("C:\\Users\\crris\\source\\repos\\TallyProject\\Tally\\Tally.Api\\appsettings.json")
+                .SetBasePath(basePath)
+                .AddJsonFile("appsettings.json")
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<TallyDbContext>();

@@ -26,12 +26,7 @@ namespace Tally.Data
             base.OnModelCreating(builder);
             // Add custom configuration here if needed
 
-            builder.Entity<Container>()
-                .HasOne(c => c.Location)
-                .WithMany(l => l.Containers)
-                .HasForeignKey(c => c.LocationId)
-                .OnDelete(DeleteBehavior.Restrict);
-
+            //Item relationships
             builder.Entity<Item>()
                 .HasOne(i => i.Container)
                 .WithMany(c => c.Items)
@@ -40,9 +35,49 @@ namespace Tally.Data
 
             builder.Entity<Item>()
                 .HasOne(i => i.CommonCatagory)
-                .WithMany(c => c.Items)
+                .WithMany(c => c.CommonCatagoryItems)
                 .HasForeignKey(i => i.CommonCatagoryId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Item>()
+                .HasOne(i => i.CustomCatagory)
+                .WithMany(c => c.CustomCatagoryItems)
+                .HasForeignKey(i => i.CustomCatagoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Container relationships
+            builder.Entity<Container>()
+                .HasOne(c => c.Room)
+                .WithMany(l => l.Containers)
+                .HasForeignKey(c => c.RoomId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Container>()
+                .HasMany(c => c.Items)
+                .WithOne(i => i.Container)
+                .HasForeignKey(i => i.ContainerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Room relationships
+            builder.Entity<Room>()
+                .HasOne(r => r.Location)
+                .WithMany(l => l.Rooms)
+                .HasForeignKey(r => r.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Room>()
+                .HasMany(r => r.Containers)
+                .WithOne(c => c.Room)
+                .HasForeignKey(c => c.RoomId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Location relationships
+            builder.Entity<Location>()
+                .HasMany(l => l.Rooms)
+                .WithOne(r => r.Location)
+                .HasForeignKey(r => r.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }
