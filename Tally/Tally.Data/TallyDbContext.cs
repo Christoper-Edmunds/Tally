@@ -21,6 +21,8 @@ namespace Tally.Data
         public DbSet<CustomCatagory> CustomCatagories { get; set; }
         public DbSet<CommonCatagory> CommonCatagories { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -77,6 +79,12 @@ namespace Tally.Data
                 .WithOne(r => r.Location)
                 .HasForeignKey(r => r.LocationId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // User Relationships
+            builder.Entity<User>()
+                .HasMany(u => u.Locations)
+                .WithMany(i => i.Users)
+                .UsingEntity(j => j.ToTable("UserLocations"));
 
         }
     }
