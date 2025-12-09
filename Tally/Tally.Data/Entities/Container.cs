@@ -5,7 +5,7 @@ namespace Tally.Data.Entities
         // Foreign key
         public int RoomId { get; set; }
         // Navigation property
-        public Room? Room { get; set; }
+        public required Room Room { get; set; }
         // Foreign key for Common Category
         public ICollection<Item> Items { get; set; } = new List<Item>();
     }
