@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tally.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc415961fc4a5cb437435c400383a946cf902611")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12fc38940bb722c979669af9836d371047c8bded")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tally.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tally.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
