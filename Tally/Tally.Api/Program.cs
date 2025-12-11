@@ -1,6 +1,11 @@
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using Tally.Api.Interfaces;
+using Tally.Api.Services;
 using Tally.Data;
+using Tally.Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +16,28 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<TallyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnectionString")));
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuer = true,
+//            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+
+//            ValidateAudience = true,
+//            ValidAudience = builder.Configuration["Jwt:Audience"],
+
+//            ValidateLifetime = true, // Ensures token hasn't expired
+
+//            ValidateIssuerSigningKey = true,
+//            IssuerSigningKey = new SymmetricSecurityKey(
+//                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])) // Secret key from config
+//        };
+//    });
 
 var app = builder.Build();
 

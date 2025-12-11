@@ -10,5 +10,7 @@ namespace Tally.Data.Entities
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public DateTime? LastLoginAt { get; set; }
         public ICollection<Location> Locations { get; set; } = new List<Location>();
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; }
     }
 }
