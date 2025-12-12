@@ -1,0 +1,33 @@
+﻿@page "/login"
+@using MudBlazor
+
+<PageTitle>Login THIS IS A TEMP FORM TO BE TWEAKED</PageTitle>
+
+<MudPaper Class="pa-6 mx-auto" MaxWidth="400px" Elevation="4">
+    <MudText Typo="Typo.h5" Class="mb-4">Login</MudText>
+    <MudForm @ref="form">
+        <MudTextField @bind-Value="loginModel.Email" Label="Email" Variant="Variant.Outlined" Required="true" />
+        <MudTextField @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Variant="Variant.Outlined" Required="true" />
+        <MudButton OnClick="OnLogin" Color="Color.Primary" Variant="Variant.Filled" Class="mt-4" Disabled="@(!form.IsValid)">Login</MudButton>
+
+    </MudForm>
+</MudPaper>
+
+@code {
+    private MudForm form;
+    private LoginModel loginModel = new();
+    private string TextValue { get; set; }
+
+    private async Task OnLogin()
+    {
+        // Simulate async work to avoid CS1998
+        await Task.CompletedTask;
+        // TODO: Call your API to authenticate
+    }
+
+    public class LoginModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}

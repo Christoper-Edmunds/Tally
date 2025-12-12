@@ -1,4 +1,4 @@
-using Tally.Web.Client.Pages;
+using MudBlazor.Services;
 using Tally.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddMudServices();
+
 
 var app = builder.Build();
 
