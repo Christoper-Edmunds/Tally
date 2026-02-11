@@ -86,6 +86,20 @@ namespace Tally.Data
                 .WithMany(i => i.Users)
                 .UsingEntity(j => j.ToTable("UserLocations"));
 
+            // FoodDatabase relationships
+
+            builder.Entity<FoodDatabaseFastSearch>()
+                .HasOne(f => f.SlowSearchData)
+                .WithOne(s => s.FastSearchData)
+                .HasForeignKey<FoodDatabaseSlowSearch>(s => s.Code);
+
+            builder.Entity<Item>()
+                .HasOne(i => i.FoodDatabaseEntry)
+                .WithMany()  // No navigation back to Items from FoodDatabase
+                .HasForeignKey(i => i.FoodDatabaseCode)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);  // Optional relationship
+
         }
     }
 }
