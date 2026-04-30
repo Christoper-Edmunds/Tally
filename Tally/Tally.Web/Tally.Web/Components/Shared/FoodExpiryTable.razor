@@ -9,7 +9,7 @@
                     <th>Category</th>
                     <th>Stored</th>
                     <th>Age (days)</th>
-                    <th>Actions</th>
+                    <th class="delete-header">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,15 +18,15 @@
                     @foreach (var item in SortedItems)
                     {
                         <tr class="@GetRowClass(item)">
-                            <td>@item.Name</td>
-                            <td>@(item.Category ?? "—")</td>
-                            <td>@item.CreatedDate.ToShortDateString()</td>
-                            <td>@GetAgeDays(item)</td>
-                            <td class="actions-cell">
-                                @if (ActionsTemplate is not null)
-                                {
-                                    @ActionsTemplate(item)
-                                }
+                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@item.Name</td>
+                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@(item.Category ?? "—")</td>
+                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@item.CreatedDate.ToShortDateString()</td>
+                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@GetAgeDays(item)</td>
+                            <td class="delete-cell" @onclick:stopPropagation="true">
+                                <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                               Size="Size.Small"
+                                               Color="Color.Error"
+                                               OnClick="@(() => OnDelete.InvokeAsync(item))" />
                             </td>
                         </tr>
                     }
@@ -55,11 +55,13 @@
     [Parameter]
     public RenderFragment? HeaderContent { get; set; }
 
-    [Parameter, EditorRequired]
-    public RenderFragment<FoodItemDisplay> ActionsTemplate { get; set; } = default!;
-
+    /// <summary>Fires when any data cell in a row is clicked.</summary>
     [Parameter]
     public EventCallback<FoodItemDisplay> OnRowClicked { get; set; }
+
+    /// <summary>Fires when the delete button is clicked.</summary>
+    [Parameter]
+    public EventCallback<FoodItemDisplay> OnDelete { get; set; }
 
     private IEnumerable<FoodItemDisplay> SortedItems
         => Items!.OrderBy(i => i.CreatedDate);

@@ -27,12 +27,35 @@
 .food-table td {
     padding: 10px 14px;
     text-align: center;
-    border: 1px solid var(--mud-palette-lines-default);
+    border-left: 1px solid var(--mud-palette-lines-default);
+    border-right: 1px solid var(--mud-palette-lines-default);
+}
+
+.food-table tr {
+    border-bottom: 3px solid var(--mud-palette-text-secondary);
+}
+
+.food-table thead tr {
+    border-bottom: 3px solid var(--mud-palette-text-primary);
 }
 
 .food-table th {
     font-weight: 600;
     color: var(--mud-palette-text-secondary);
+}
+
+.clickable-cell {
+    cursor: pointer;
+}
+
+.clickable-cell:hover {
+    filter: brightness(0.92);
+}
+
+.delete-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .row-safe {
@@ -50,10 +73,4 @@
 .row-expired {
     background-color: var(--mud-palette-error-darken);
     color: white;
-}
-
-.actions-cell {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
 }

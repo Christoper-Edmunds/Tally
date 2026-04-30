@@ -4,18 +4,10 @@
 
 <PageTitle>Dashboard</PageTitle>
 
-<FoodExpiryTable Items="@_items" DefaultShelfLifeDays="5">
-    <ActionsTemplate Context="item">
-        <MudIconButton Icon="@Icons.Material.Filled.CheckCircle"
-                       Size="Size.Small"
-                       Color="Color.Success"
-                       OnClick="@(() => Consume(item))" />
-        <MudIconButton Icon="@Icons.Material.Filled.Delete"
-                       Size="Size.Small"
-                       Color="Color.Error"
-                       OnClick="@(() => Discard(item))" />
-    </ActionsTemplate>
-</FoodExpiryTable>
+<FoodExpiryTable Items="@_items"
+                 DefaultShelfLifeDays="5"
+                 OnRowClicked="HandleRowClicked"
+                 OnDelete="HandleDelete" />
 
 @code {
     private List<FoodItemDisplay>? _items;
@@ -42,7 +34,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        // TODO: Replace with API call
         await Task.Delay(300);
 
         _items = Enumerable.Range(0, 33).Select(i => new FoodItemDisplay
@@ -55,6 +46,11 @@
         }).ToList();
     }
 
-    private void Consume(FoodItemDisplay item) => _items?.Remove(item);
-    private void Discard(FoodItemDisplay item) => _items?.Remove(item);
+    private Task HandleRowClicked(FoodItemDisplay item)
+    {
+        // TODO: Open detail card
+        return Task.CompletedTask;
+    }
+
+    private void HandleDelete(FoodItemDisplay item) => _items?.Remove(item);
 }
