@@ -1,0 +1,59 @@
+.food-table-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-table-scroll {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.food-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--mud-palette-lines-default);
+}
+
+.food-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--mud-palette-surface);
+}
+
+.food-table th,
+.food-table td {
+    padding: 10px 14px;
+    text-align: center;
+    border: 1px solid var(--mud-palette-lines-default);
+}
+
+.food-table th {
+    font-weight: 600;
+    color: var(--mud-palette-text-secondary);
+}
+
+.row-safe {
+    background-color: var(--mud-palette-success-lighten);
+}
+
+.row-warning {
+    background-color: var(--mud-palette-warning-lighten);
+}
+
+.row-danger {
+    background-color: var(--mud-palette-error-lighten);
+}
+
+.row-expired {
+    background-color: var(--mud-palette-error-darken);
+    color: white;
+}
+
+.actions-cell {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}

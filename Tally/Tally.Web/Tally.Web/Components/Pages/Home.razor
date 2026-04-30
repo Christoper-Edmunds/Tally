@@ -1,7 +1,60 @@
 ﻿@page "/"
+@using Tally.Web.Models
+@using Tally.Web.Components.Shared
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Dashboard</PageTitle>
 
-<h1>Hello, world!</h1>
+<FoodExpiryTable Items="@_items" DefaultShelfLifeDays="5">
+    <ActionsTemplate Context="item">
+        <MudIconButton Icon="@Icons.Material.Filled.CheckCircle"
+                       Size="Size.Small"
+                       Color="Color.Success"
+                       OnClick="@(() => Consume(item))" />
+        <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                       Size="Size.Small"
+                       Color="Color.Error"
+                       OnClick="@(() => Discard(item))" />
+    </ActionsTemplate>
+</FoodExpiryTable>
 
-Welcome to your new app.
+@code {
+    private List<FoodItemDisplay>? _items;
+
+    private static readonly string[] TestNames =
+    {
+        "Milk", "Bread", "Chicken", "Yoghurt", "Cheese", "Eggs", "Bacon",
+        "Lettuce", "Tomatoes", "Butter", "Ham", "Salmon", "Cream", "Apples",
+        "Carrots", "Mushrooms", "Spinach", "Prawns", "Sausages", "Beef Mince",
+        "Orange Juice", "Hummus", "Pork Chops", "Grapes", "Cucumber",
+        "Coleslaw", "Pasta Sauce", "Tofu", "Blueberries", "Soup", "Deli Turkey",
+        "Cheddar", "Avocado"
+    };
+
+    private static readonly string[] TestCategories =
+    {
+        "Dairy", "Bakery", "Meat", "Dairy", "Dairy", "Eggs", "Meat",
+        "Vegetables", "Vegetables", "Dairy", "Meat", "Seafood", "Dairy", "Fruit",
+        "Vegetables", "Vegetables", "Vegetables", "Seafood", "Meat", "Meat",
+        "Beverages", "Deli", "Meat", "Fruit", "Vegetables",
+        "Deli", "Condiments", "Plant-Based", "Fruit", "Ready Meals", "Deli",
+        "Dairy", "Fruit"
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: Replace with API call
+        await Task.Delay(300);
+
+        _items = Enumerable.Range(0, 33).Select(i => new FoodItemDisplay
+        {
+            Id = i + 1,
+            Name = TestNames[i],
+            Category = TestCategories[i],
+            CreatedDate = DateTime.UtcNow.AddDays(-Random.Shared.Next(1, 10)),
+            ShelfLifeDays = Random.Shared.Next(3, 10)
+        }).ToList();
+    }
+
+    private void Consume(FoodItemDisplay item) => _items?.Remove(item);
+    private void Discard(FoodItemDisplay item) => _items?.Remove(item);
+}

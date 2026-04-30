@@ -1,33 +1,8 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Tally.Web</a>
-    </div>
-</div>
+﻿@using MudBlazor
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <MudButton Href="" Match="NavLinkMatch.All"
-                       Color="Color.Inherit" Variant="Variant.Text">
-                Home
-            </MudButton>
-        </div>
-
-        <div class="nav-item px-3">
-            <MudButton Href="counter"
-                       Color="Color.Inherit" Variant="Variant.Text">
-                Counter
-            </MudButton>
-        </div>
-
-        <div class="nav-item px-3">
-            <MudButton Href="weather"
-                       Color="Color.Inherit" Variant="Variant.Text">
-                Weather
-            </MudButton>
-        </div>
-    </nav>
-</div>
+<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+    <MudNavLink Href="/counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+    <MudNavLink Href="/weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Cloud">Weather</MudNavLink>
+</MudNavMenu>
 

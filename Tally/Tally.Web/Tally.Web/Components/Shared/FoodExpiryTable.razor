@@ -1,0 +1,84 @@
+@using Tally.Web.Models
+
+<div class="food-table-container">
+    <div class="food-table-scroll">
+        <table class="food-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Stored</th>
+                    <th>Age (days)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Items is not null)
+                {
+                    @foreach (var item in SortedItems)
+                    {
+                        <tr class="@GetRowClass(item)">
+                            <td>@item.Name</td>
+                            <td>@(item.Category ?? "—")</td>
+                            <td>@item.CreatedDate.ToShortDateString()</td>
+                            <td>@GetAgeDays(item)</td>
+                            <td class="actions-cell">
+                                @if (ActionsTemplate is not null)
+                                {
+                                    @ActionsTemplate(item)
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (Items is null)
+    {
+        <MudProgressLinear Indeterminate="true" Class="mt-3" />
+    }
+    else if (!Items.Any())
+    {
+        <MudText Typo="Typo.body2" Class="mt-3" Align="Align.Center" Color="Color.Tertiary">No items to display.</MudText>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public IReadOnlyList<FoodItemDisplay>? Items { get; set; }
+
+    [Parameter]
+    public int DefaultShelfLifeDays { get; set; } = 7;
+
+    [Parameter]
+    public RenderFragment? HeaderContent { get; set; }
+
+    [Parameter, EditorRequired]
+    public RenderFragment<FoodItemDisplay> ActionsTemplate { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback<FoodItemDisplay> OnRowClicked { get; set; }
+
+    private IEnumerable<FoodItemDisplay> SortedItems
+        => Items!.OrderBy(i => i.CreatedDate);
+
+    private int GetAgeDays(FoodItemDisplay item)
+        => (int)(DateTime.UtcNow - item.CreatedDate).TotalDays;
+
+    private string GetRowClass(FoodItemDisplay item)
+    {
+        var ageDays = GetAgeDays(item);
+        var shelfLife = item.ShelfLifeDays > 0 ? item.ShelfLifeDays : DefaultShelfLifeDays;
+        var ratio = (double)ageDays / shelfLife;
+
+        return ratio switch
+        {
+            >= 1.0 => "row-expired",
+            >= 0.75 => "row-danger",
+            >= 0.5 => "row-warning",
+            _ => "row-safe"
+        };
+    }
+}
