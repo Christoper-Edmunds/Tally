@@ -1,0 +1,29 @@
+@using Tally.Web.Models
+
+@if (Item is not null)
+{
+    <div class="overlay" @onclick="Close">
+        <div class="detail-card" @onclick:stopPropagation="true">
+            <MudIconButton Icon="@Icons.Material.Filled.Close"
+                           Size="Size.Medium"
+                           Class="close-button"
+                           OnClick="Close" />
+
+            <MudText Typo="Typo.h5" Class="mb-2">@Item.Name</MudText>
+            <MudText Typo="Typo.body1"><strong>Category:</strong> @(Item.Category ?? "—")</MudText>
+            <MudText Typo="Typo.body1"><strong>Stored:</strong> @Item.CreatedDate.ToShortDateString()</MudText>
+            <MudText Typo="Typo.body1"><strong>Age:</strong> @((int)(DateTime.UtcNow - Item.CreatedDate).TotalDays) days</MudText>
+            <MudText Typo="Typo.body1"><strong>Shelf Life:</strong> @Item.ShelfLifeDays days</MudText>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public FoodItemDisplay? Item { get; set; }
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private void Close() => OnClose.InvokeAsync();
+}

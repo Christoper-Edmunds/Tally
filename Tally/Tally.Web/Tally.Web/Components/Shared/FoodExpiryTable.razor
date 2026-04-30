@@ -22,11 +22,8 @@
                             <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@(item.Category ?? "—")</td>
                             <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@item.CreatedDate.ToShortDateString()</td>
                             <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@GetAgeDays(item)</td>
-                            <td class="delete-cell" @onclick:stopPropagation="true">
-                                <MudIconButton Icon="@Icons.Material.Filled.Delete"
-                                               Size="Size.Small"
-                                               Color="Color.Error"
-                                               OnClick="@(() => OnDelete.InvokeAsync(item))" />
+                            <td class="delete-cell" @onclick="@(() => OnDelete.InvokeAsync(item))" @onclick:stopPropagation="true">
+                                <MudIcon Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Color="Color.Error" />
                             </td>
                         </tr>
                     }

@@ -6,11 +6,14 @@
 
 <FoodExpiryTable Items="@_items"
                  DefaultShelfLifeDays="5"
-                 OnRowClicked="HandleRowClicked"
+                 OnRowClicked="OpenCard"
                  OnDelete="HandleDelete" />
+
+<ItemDetailCard Item="@_selectedItem" OnClose="CloseCard" />
 
 @code {
     private List<FoodItemDisplay>? _items;
+    private FoodItemDisplay? _selectedItem;
 
     private static readonly string[] TestNames =
     {
@@ -46,11 +49,7 @@
         }).ToList();
     }
 
-    private Task HandleRowClicked(FoodItemDisplay item)
-    {
-        // TODO: Open detail card
-        return Task.CompletedTask;
-    }
-
+    private void OpenCard(FoodItemDisplay item) => _selectedItem = item;
+    private void CloseCard() => _selectedItem = null;
     private void HandleDelete(FoodItemDisplay item) => _items?.Remove(item);
 }

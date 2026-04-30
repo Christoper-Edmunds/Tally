@@ -56,6 +56,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.delete-cell:hover {
+    background-color: rgba(244, 67, 54, 0.15);
+}
+
+.delete-cell:active {
+    background-color: rgba(244, 67, 54, 0.3);
 }
 
 .row-safe {
