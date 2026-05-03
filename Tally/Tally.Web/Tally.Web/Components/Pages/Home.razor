@@ -7,7 +7,8 @@
 <FoodExpiryTable Items="@_items"
                  DefaultShelfLifeDays="5"
                  OnRowClicked="OpenCard"
-                 OnDelete="HandleDelete" />
+                 OnDelete="HandleDelete"
+                 OnOpened="HandleOpened" />
 
 <ItemDetailCard Item="@_selectedItem" OnClose="CloseCard" />
 
@@ -39,17 +40,31 @@
     {
         await Task.Delay(300);
 
-        _items = Enumerable.Range(0, 33).Select(i => new FoodItemDisplay
+        _items = Enumerable.Range(0, 33).Select(i =>
         {
-            Id = i + 1,
-            Name = TestNames[i],
-            Category = TestCategories[i],
-            CreatedDate = DateTime.UtcNow.AddDays(-Random.Shared.Next(1, 10)),
-            ShelfLifeDays = Random.Shared.Next(3, 10)
+            var storedDaysAgo = Random.Shared.Next(1, 10);
+            return new FoodItemDisplay
+            {
+                Id = i + 1,
+                Name = TestNames[i],
+                Category = TestCategories[i],
+                CreatedDate = DateTime.UtcNow.AddDays(-storedDaysAgo),
+                ShelfLifeDays = Random.Shared.Next(3, 10),
+                // Roughly half the items come pre-opened, opened 1-3 days after storing
+                OpenedDate = i % 3 == 0
+                    ? DateTime.UtcNow.AddDays(-storedDaysAgo + Random.Shared.Next(1, 3))
+                    : null
+            };
         }).ToList();
     }
 
     private void OpenCard(FoodItemDisplay item) => _selectedItem = item;
     private void CloseCard() => _selectedItem = null;
     private void HandleDelete(FoodItemDisplay item) => _items?.Remove(item);
+
+    private Task HandleOpened(FoodItemDisplay item)
+    {
+        // TODO: API call to persist opened date
+        return Task.CompletedTask;
+    }
 }

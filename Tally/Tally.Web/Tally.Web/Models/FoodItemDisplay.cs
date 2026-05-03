@@ -9,6 +9,7 @@ public class FoodItemDisplay
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string? Category { get; set; }
-    public DateTime CreatedDate { get; set; }  // maps from BaseEntity.CreatedDate
+    public DateTime CreatedDate { get; set; }
     public int ShelfLifeDays { get; set; }
-}// determined by category/product lookup
+    public DateTime? OpenedDate { get; set; }
+}

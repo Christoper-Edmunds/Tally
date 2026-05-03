@@ -3,15 +3,6 @@
 <div class="food-table-container">
     <div class="food-table-scroll">
         <table class="food-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Stored</th>
-                    <th>Age (days)</th>
-                    <th class="delete-header">Delete</th>
-                </tr>
-            </thead>
             <tbody>
                 @if (Items is not null)
                 {
@@ -19,11 +10,20 @@
                     {
                         <tr class="@GetRowClass(item)">
                             <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@item.Name</td>
-                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@(item.Category ?? "—")</td>
                             <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@item.CreatedDate.ToShortDateString()</td>
-                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@GetAgeDays(item)</td>
+                            <td @onclick="@(() => OnRowClicked.InvokeAsync(item))" class="clickable-cell">@GetAgeDays(item) days</td>
+                            <td class="opened-cell" @onclick="@(() => MarkOpened(item))" @onclick:stopPropagation="true">
+                                @if (item.OpenedDate.HasValue)
+                                {
+                                    <span>@item.OpenedDate.Value.ToShortDateString()</span>
+                                }
+                                else
+                                {
+                                    <MudIcon Icon="@Icons.Material.Filled.FolderOpen" Size="Size.Small" Style="color: white;" />
+                                }
+                            </td>
                             <td class="delete-cell" @onclick="@(() => OnDelete.InvokeAsync(item))" @onclick:stopPropagation="true">
-                                <MudIcon Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Color="Color.Error" />
+                                <MudIcon Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Style="color: white;" />
                             </td>
                         </tr>
                     }
@@ -52,19 +52,29 @@
     [Parameter]
     public RenderFragment? HeaderContent { get; set; }
 
-    /// <summary>Fires when any data cell in a row is clicked.</summary>
     [Parameter]
     public EventCallback<FoodItemDisplay> OnRowClicked { get; set; }
 
-    /// <summary>Fires when the delete button is clicked.</summary>
     [Parameter]
     public EventCallback<FoodItemDisplay> OnDelete { get; set; }
+
+    [Parameter]
+    public EventCallback<FoodItemDisplay> OnOpened { get; set; }
 
     private IEnumerable<FoodItemDisplay> SortedItems
         => Items!.OrderBy(i => i.CreatedDate);
 
     private int GetAgeDays(FoodItemDisplay item)
         => (int)(DateTime.UtcNow - item.CreatedDate).TotalDays;
+
+    private async Task MarkOpened(FoodItemDisplay item)
+    {
+        if (!item.OpenedDate.HasValue)
+        {
+            item.OpenedDate = DateTime.UtcNow;
+            await OnOpened.InvokeAsync(item);
+        }
+    }
 
     private string GetRowClass(FoodItemDisplay item)
     {
@@ -80,4 +90,4 @@
             _ => "row-safe"
         };
     }
-}
+}}
